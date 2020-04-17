@@ -1,4 +1,5 @@
 <?php
+
 //MY API link
 //https://rapidapi.com/kenpi04/api/food-calorie-data-search
 
@@ -55,10 +56,13 @@ if (isset($_GET['title'])) //variablen URl balk
         ),
     ));
 
+    $id = $curl;
+
     $response = curl_exec($curl);
     $err = curl_error($curl);
 
     curl_close($curl);
+    echo $id ;
 
     if ($err) {
         echo "cURL Error #:" . $err;
@@ -66,4 +70,5 @@ if (isset($_GET['title'])) //variablen URl balk
         echo $response;
     }
 }
+
 ?>
