@@ -3,35 +3,6 @@
 //MY API link
 //https://rapidapi.com/kenpi04/api/food-calorie-data-search
 
-echo '
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/156ac59753.js" crossorigin="anonymous"></script>
-</head>
-<body>
-<nav class=" navbar-default" role="navigation">
-
-    <div class="topnav">
-        <a href="index.php"><i class="fas fa-home"></i></a>
-
-        <form action="" method="get">
-            <input class="search" type="text" placeholder="Search.." name="title">
-        </form>
-
-    </div>
-
-</nav>
-</body>
-</html>';
-
 //PROCEDUREEL
 
 $curl = curl_init();
@@ -58,13 +29,23 @@ if (isset($_GET['title'])) //variablen URl balk
     $response = curl_exec($curl);
     $err = curl_error($curl);
 
+    $phpArray =json_decode($response);
     curl_close($curl);
+    $objectnumber=0;
+    $water=$phpArray[$objectnumber]->water;
+    $energ_kcal=$phpArray[$objectnumber]->energ_kcal;
+    $calcium=$phpArray[$objectnumber]->calcium;
+    $iron=$phpArray[$objectnumber]->iron;
+
+
+//var_dump($phpArray);
 
     if ($err) {
         echo "cURL Error #:" . $err;
     } else {
-        echo $response;
+//        echo $response;
     }
+
 }
 
 ?>

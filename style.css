@@ -1,4 +1,22 @@
 /* Add a black background color to the top navigation bar */
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  /*margin-left: 20%;*/
+}
+
+td  th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.table tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
 .topnav {
     overflow: hidden;
     background-color: #FF5733;
