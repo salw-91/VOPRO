@@ -32,13 +32,24 @@ if (isset($_GET['title'])) //variablen URl balk
     $phpArray =json_decode($response);
     curl_close($curl);
     $objectnumber=0;
+
+    if( isset( $_POST['ok'] ))
+    {
+        $objectnumber++;
+    }
+
+//    if( isset( $_POST['modify']  ) && $objectnumber> 0)
+//    {
+//        $objectnumber=$objectnumber-1 ;
+//    }
+
     $water=$phpArray[$objectnumber]->water;
     $energ_kcal=$phpArray[$objectnumber]->energ_kcal;
     $calcium=$phpArray[$objectnumber]->calcium;
     $iron=$phpArray[$objectnumber]->iron;
 
 
-//var_dump($phpArray);
+// var_dump($phpArray);
 
     if ($err) {
         echo "cURL Error #:" . $err;

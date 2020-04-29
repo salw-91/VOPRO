@@ -1,5 +1,5 @@
 <?php
-    include('index.php');
+include('index.php');
 echo '
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +18,7 @@ echo '
 <nav class=" navbar-default" role="navigation">
 
     <div class="topnav">
-        <a href="index.php"><i class="fas fa-home"></i></a>
+        <a href="home.php"><i class="fas fa-home"></i></a>
 
         <form action="" method="get">
             <input class="search" type="text" placeholder="Search.." name="title">
@@ -27,32 +27,44 @@ echo '
     </div>
 </nav>';
 
-    if (isset($_GET['title'])){
-    echo "
-<table class=\'table\'>
-  <tr>
-    <th>Company</th>
-    <th>Values</th>
-    
-  </tr>
-  <tr>
-    <td>Water</td>
-    <td>$water</td>
-  </tr><tr>
-    <td>Calcium</td>
-    <td>$calcium</td>
-  </tr>
-  <tr>
-    <td>Energ kcal</td>
-    <td>$energ_kcal</td>
-  </tr>
-  <tr>
-    <td>Iron</td>
-    <td>$iron</td>
-  </tr>
+if (isset($_GET['title'])) {
 
-</table>";
+    echo '<form method="post">';
+    if ($objectnumber > 0) {
+        echo '<input type="submit" name="modify" value="Back" />
+
+';
+    }
+    echo '
+<input type="submit" name="ok" value="Next" />
+</form>';
+
+    echo $objectnumber;
+
+    echo "
+            <table class='table'>
+              <tr>
+                <th>Company</th>
+                <th>Values</th>
+              </tr>
+              <tr>
+                <td>Water</td>
+                <td>$water</td>
+              </tr><tr>
+                <td>Calcium</td>
+                <td>$calcium</td>
+              </tr>
+              <tr>
+                <td>Energ kcal</td>
+                <td>$energ_kcal</td>
+              </tr>
+              <tr>
+                <td>Iron</td>
+                <td>$iron</td>
+              </tr>
+            </table>";
 }
+var_dump($phpArray);
 
 echo '
 </body>
