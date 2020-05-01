@@ -21,7 +21,7 @@ echo '
         <a href="home.php"><i class="fas fa-home"></i></a>
 
         <form action="" method="get">
-            <input class="search" type="text" placeholder="Search.." name="title">
+            <input class="search" type="text" placeholder="Search for food.." name="title">
         </form>
 
     </div>
@@ -29,17 +29,13 @@ echo '
 
 if (isset($_GET['title'])) {
 
-    echo '<form method="post">';
-    if ($objectnumber > 0) {
-        echo '<input type="submit" name="modify" value="Back" />
+    echo"<form method='post'>
+<input name='add' type=\"submit\" value='+'>
+<h3><em>att"; 
+echo  $_SESSION['attnum']-- ; echo" </em></h3>
+</form>";
 
-';
-    }
-    echo '
-<input type="submit" name="ok" value="Next" />
-</form>';
-
-    echo $objectnumber;
+    // echo $objectnumber;
 
     echo "
             <table class='table'>
@@ -64,7 +60,6 @@ if (isset($_GET['title'])) {
               </tr>
             </table>";
 }
-var_dump($phpArray);
 
 echo '
 </body>
