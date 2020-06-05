@@ -60,11 +60,7 @@
 .table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 80%;
-  margin-top: 2%;
-  /* display: block; */
-  /*display: inline-block;*/
-  /*margin-left: 20%;*/
+  display: inline-block;  
 }
 
 .table td .table th {

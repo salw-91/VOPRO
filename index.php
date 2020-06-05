@@ -32,25 +32,9 @@ if (isset($_GET['title'])) //variablen URl balk
     $phpArray =json_decode($response);
     curl_close($curl);
 
-    session_start();
-    // Page was not reloaded via a button press
-    if (!isset($_POST['add'])) {
-        $_SESSION['attnum'] = 0; // Reset counter
-    }
-    $sn=$_SESSION['attnum'];
-    // echo $test;
-//    if( isset( $_POST['modify']  ) && $objectnumber> 0)
-//    {
-//        $objectnumber=$objectnumber-1 ;
-//    }
+    $energ_kcal=$phpArray[0]->energ_kcal;
 
-    $water=$phpArray[$sn]->water;
-    $energ_kcal=$phpArray[$sn]->energ_kcal;
-    $calcium=$phpArray[$sn]->calcium;
-    $iron=$phpArray[$sn]->iron;
-
-
-// var_dump($phpArray);
+    // var_dump($phpArray);
 
     if ($err) {
         echo "cURL Error #:" . $err;

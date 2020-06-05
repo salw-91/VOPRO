@@ -29,35 +29,17 @@ echo '
 
 if (isset($_GET['title'])) {
 
-    echo"<form method='post'>
-<input name='add' type=\"submit\" value='+'>
-<h3><em>att"; 
-echo  $_SESSION['attnum']-- ; echo" </em></h3>
-</form>";
-
-    // echo $objectnumber;
-
     echo "
             <table class='table'>
               <tr>
                 <th>Company</th>
                 <th>Values</th>
-              </tr>
-              <tr>
-                <td>Water</td>
-                <td>$water</td>
-              </tr><tr>
-                <td>Calcium</td>
-                <td>$calcium</td>
-              </tr>
+
               <tr>
                 <td>Energ kcal</td>
                 <td>$energ_kcal</td>
               </tr>
-              <tr>
-                <td>Iron</td>
-                <td>$iron</td>
-              </tr>
+
             </table>";
 }
 
