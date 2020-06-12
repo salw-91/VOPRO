@@ -1,6 +1,7 @@
 <?php
 include('index.php');
-
+require_once "config.php";
+$titleGET = $_GET['title'];
 if (isset($_GET['title'])) {
     echo "<table class='table'>
               <tr>
@@ -9,7 +10,52 @@ if (isset($_GET['title'])) {
 
               <tr>
                 <td>$titleGET</td>
-                <td>$energ_kcal</td>
+                <form action=\"register-food.php\" method=\"post\">
+                <td name='food'>$energ_kcal</td>
+                <td> 
+                    <input type=\"hidden\" name=\"kcall\" value=\"$energ_kcal\">
+                    <input type=\"hidden\" name=\"user_id\" value=\"$user_id\">
+                    <button type=\"submit\" class=\"btn btn-success\" >Add</button></form>
+                </td>
               </tr>
 
-            </table>";}
+            </table>";
+}
+require_once "config.php";
+
+$food = $link->prepare("select    user_id,
+                                        food_id,
+                                from    food
+                                ");
+$food->execute();
+
+echo "<table>";
+foreach($food as $food)
+{
+    echo "<tr>";
+    echo "<td>" . $food["user_id"]             ."</td>";
+    echo "<td>" . $food["food_id"]           ."</td>";
+    echo "</tr>";
+}
+echo "</table>";
+
+
+//echo "<table class='table'>
+//              <tr>
+//              <td>your food</td></tr>
+//
+//                <th>Food</th>
+//                <th>Values</th>
+//
+//              <tr>
+//                <td></td>
+//                <form action=\"\" method=\"post\">
+//                <td name='food'></td>
+//                <td>
+//                    <input type=\"hidden\" name=\"kcall\" value=\"\">
+//                    <input type=\"hidden\" name=\"user_id\" value=\"\">
+//                    <button type=\"submit\" class=\"btn btn-success\" >Delete</button></form>
+//                </td>
+//              </tr>
+//
+//            </table>";

@@ -1,4 +1,11 @@
 <?php
+session_start();
+
+// Check if the user is logged in, if not then redirect him to login page
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    header("location: login.php");
+    exit;
+};
 echo '
 <!DOCTYPE html>
 <html lang="en">
@@ -57,10 +64,11 @@ if (isset($_GET['title'])) //variablen URl balk
 
     $phpArray =json_decode($response);
     curl_close($curl);
-
+    $user_id = htmlspecialchars($_SESSION["id"]);
     $energ_kcal=$phpArray[0]->energ_kcal;
+    $id=$phpArray[0]->id;
 
-    // var_dump($phpArray);
+//     var_dump($phpArray);
 
     if ($err) {
         echo "cURL Error #:" . $err;
