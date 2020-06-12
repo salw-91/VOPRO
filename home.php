@@ -1,67 +1,61 @@
 <?php
 include('index.php');
-echo '
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/156ac59753.js" crossorigin="anonymous"></script>
-
-</head>
-<body>
-<nav class=" navbar-default" role="navigation">
-
-    <div class="topnav">
-        <a href="home.php"><i class="fas fa-home"></i></a>
-
-        <form action="" method="get">
-            <input class="search" type="text" placeholder="Search for food.." name="title">
-        </form>
-
-    </div>
-</nav>';
-
+require_once "config.php";
+$titleGET = $_GET['title'];
 if (isset($_GET['title'])) {
-
-    echo"<form method='post'>
-<input name='add' type=\"submit\" value='+'>
-<h3><em>att"; 
-echo  $_SESSION['attnum']-- ; echo" </em></h3>
-</form>";
-
-    // echo $objectnumber;
-
-    echo "
-            <table class='table'>
+    echo "<table class='table'>
               <tr>
-                <th>Company</th>
+                <th>Food</th>
                 <th>Values</th>
-              </tr>
+
               <tr>
-                <td>Water</td>
-                <td>$water</td>
-              </tr><tr>
-                <td>Calcium</td>
-                <td>$calcium</td>
+                <td>$titleGET</td>
+                <form action=\"register-food.php\" method=\"post\">
+                <td name='food'>$energ_kcal</td>
+                <td> 
+                    <input type=\"hidden\" name=\"kcall\" value=\"$energ_kcal\">
+                    <input type=\"hidden\" name=\"user_id\" value=\"$user_id\">
+                    <button type=\"submit\" class=\"btn btn-success\" >Add</button></form>
+                </td>
               </tr>
-              <tr>
-                <td>Energ kcal</td>
-                <td>$energ_kcal</td>
-              </tr>
-              <tr>
-                <td>Iron</td>
-                <td>$iron</td>
-              </tr>
+
             </table>";
 }
+require_once "config.php";
 
-echo '
-</body>
-</html>
-';
+$food = $link->prepare("select    user_id,
+                                        food_id,
+                                from    food
+                                ");
+$food->execute();
+
+echo "<table>";
+foreach($food as $food)
+{
+    echo "<tr>";
+    echo "<td>" . $food["user_id"]             ."</td>";
+    echo "<td>" . $food["food_id"]           ."</td>";
+    echo "</tr>";
+}
+echo "</table>";
+
+
+//echo "<table class='table'>
+//              <tr>
+//              <td>your food</td></tr>
+//
+//                <th>Food</th>
+//                <th>Values</th>
+//
+//              <tr>
+//                <td></td>
+//                <form action=\"\" method=\"post\">
+//                <td name='food'></td>
+//                <td>
+//                    <input type=\"hidden\" name=\"kcall\" value=\"\">
+//                    <input type=\"hidden\" name=\"user_id\" value=\"\">
+//                    <button type=\"submit\" class=\"btn btn-success\" >Delete</button></form>
+//                </td>
+//              </tr>
+//
+//            </table>";
