@@ -21,20 +21,20 @@ if (isset($_GET['title'])) {
 
             </table>";
 }
-//require_once "config.php";
-//
-//$food = $link->prepare("select    user_id,
-//                                        food_id,
-//                                from    food
-//                                ");
-//$food->execute();
-//
+require_once "config.php";
+
+$food = "select    user_id,
+                                        food_id,
+                                from    food
+                                ";
+$result = $link->query($food);
+
 //echo "<table>";
-//foreach($food as $food)
+//foreach($result as $result)
 //{
 //    echo "<tr>";
-//    echo "<td>" . $food["user_id"]             ."</td>";
-//    echo "<td>" . $food["food_id"]           ."</td>";
+//    echo "<td>" . $result["user_id"]."</td>";
+//    echo "<td>" . $result["food_id"]."</td>";
 //    echo "</tr>";
 //}
 //echo "</table>";
