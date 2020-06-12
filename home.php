@@ -21,23 +21,23 @@ if (isset($_GET['title'])) {
 
             </table>";
 }
-require_once "config.php";
-
-$food = $link->prepare("select    user_id,
-                                        food_id,
-                                from    food
-                                ");
-$food->execute();
-
-echo "<table>";
-foreach($food as $food)
-{
-    echo "<tr>";
-    echo "<td>" . $food["user_id"]             ."</td>";
-    echo "<td>" . $food["food_id"]           ."</td>";
-    echo "</tr>";
-}
-echo "</table>";
+//require_once "config.php";
+//
+//$food = $link->prepare("select    user_id,
+//                                        food_id,
+//                                from    food
+//                                ");
+//$food->execute();
+//
+//echo "<table>";
+//foreach($food as $food)
+//{
+//    echo "<tr>";
+//    echo "<td>" . $food["user_id"]             ."</td>";
+//    echo "<td>" . $food["food_id"]           ."</td>";
+//    echo "</tr>";
+//}
+//echo "</table>";
 
 
 //echo "<table class='table'>
