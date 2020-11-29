@@ -26,6 +26,7 @@ echo '
 
     <div class="topnav">
         <a href="welcome.php"><i class="fas fa-home"></i></a>
+        <a href="my_list.php">My list</a>
         <form action="home.php" method="get">
             <input class="search" type="text" placeholder="Search for food.." name="title">
         </form>
@@ -65,10 +66,11 @@ if (isset($_GET['title'])) //variablen URl balk
     $phpArray =json_decode($response);
     curl_close($curl);
     $user_id = htmlspecialchars($_SESSION["id"]);
+    $food_id=$phpArray[0]->id;
     $energ_kcal=$phpArray[0]->energ_kcal;
     $id=$phpArray[0]->id;
 
-//     var_dump($phpArray);
+    // var_dump($phpArray);
 
     if ($err) {
         echo "cURL Error #:" . $err;
@@ -83,4 +85,3 @@ echo'
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>';
-?>

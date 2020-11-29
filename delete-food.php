@@ -2,12 +2,9 @@
 require_once "config.php";
 include('index.php');
 
-$user_id = $_POST['user_id'];
-$food_id = $_POST['food_id'];
-//$food_id= $_POST['kcall'];
+$id = $_POST['id'];
 
-$sql = "INSERT INTO food2 (user_id,food_id)
-VALUES ($user_id,$food_id )";
+$sql = "DELETE FROM food2 WHERE id = $id ";
 
 if ($link->query($sql) === TRUE) {
     header('Location: ' . $_SERVER['HTTP_REFERER']);
